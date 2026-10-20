@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('type_event');
             $table->foreignId('category_id')->constrained('event_categories')->cascadeOnDelete();
-            $table->foreignId('event_id')->constrained('event_participants')->cascadeOnDelete();
             $table->string('site_location');
             $table->string('site_longitude');
             $table->string('site_lattitude');
