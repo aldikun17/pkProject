@@ -7,8 +7,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
-Route::get('sample/data',function(){ // read
+// public api
+Route::get('sample/data',function(){ // read //crud
     return "this is patient naniska";
 });
 
@@ -23,6 +23,8 @@ Route::put('sample/data/{id}',function(Request $request){ //update
 Route::delete('sample/delete/{patient_id}',function(){ //delete
     return "this is delete module";
 });
+
+
 
 
 //hindi existing dito sample/update/

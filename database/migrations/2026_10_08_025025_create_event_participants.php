@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('event_participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id')->constrained('health_event_informations')->cascadeOnDelete();
-            $table->integer('client_id');
-            $table->string("service_acquired",1);
+            $table->foreignId('event_id')->constrained('health_event_informations')->cascadeOnDelete();
+            $table->foreignId('event_service_id')->constrained('event_services')->cascadeOnDelete();
+            $table->text('client_id');
             $table->timestamps();
         });
     }

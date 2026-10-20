@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('event_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('health_event_informations')->cascadeOnDelete();
             $table->string('category_name',64);
             $table->text('category_description');
             $table->timestamps();
