@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 
 // public api
 Route::get('sample/data',function(){ // read //crud
-    return "this is patient naniska";
+    return bcrypt("password");
 });
 
 Route::post('sample/data/registration',function(Request $request){ //create
