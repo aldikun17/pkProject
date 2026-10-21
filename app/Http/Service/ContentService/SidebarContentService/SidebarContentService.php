@@ -32,31 +32,35 @@ class SidebarContentService {
     }
 
     public function getRoleBaseSidebarContent(){
-        switch($this->auth_service['role_id']):
 
-            case 1:
-                return [
-                    'dashboard' => '/dashboard',
-                    'category'  => '/heath/event/categories',
-                    'events'    => '/health/events',
-                    'reports'   => '/reports',
-                    'sign_out'  => '/auth/sign/out'
-                ];
-                break;
+        if(Auth::check()):
+            switch($this->auth_service['role_id']):
 
-            case 2:
-                return [
+                case 1:
+                    return [
+                        'dashboard' => '/dashboard',
+                        'category'  => '/heath/event/categories',
+                        'events'    => '/health/events',
+                        'reports'   => '/reports',
+                        'sign_out'  => '/auth/sign/out'
+                    ];
+                    break;
 
-                ];
-                break;
+                case 2:
+                    return [
 
-            case 3:
-                return [
+                    ];
+                    break;
 
-                ];
-                break;
+                case 3:
+                    return [
 
-        endswitch;
+                    ];
+                    break;
+
+            endswitch;
+        endif;
+
     }
 
 }

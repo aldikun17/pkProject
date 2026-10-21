@@ -8,12 +8,6 @@ import sidebarComponent from '../Components/sidebar/content/sidebarContent.vue';
 const { theme , setTheme } = useTheme();
 const { open, toggle, close } = useSidebar();
 const page = usePage();
-const props = defineProps({
-    content: {
-        type:Object,
-        required: true
-    }
-});
 //const showingNavigationDropdown = ref(false);
 //const isActive = (href) => page.url.startsWith(href)
 function changeTheme(newTheme) {
@@ -28,7 +22,7 @@ console.log();
         <div v-if="open" class="fixed inset-0 z-20 bg-black/50 md:hidden" @click="close" />
         <aside class="w-[17rem] shrink-0 flex flex-col bg-surface border-r border-line transition-[margin,transform] duration-200 max-md:fixed max-md:inset-y-0
         max-md:left-0 max-md:z-30" :class="open ? 'max-md:translate-x-0' : '-ml-[17rem] invisible max-md:ml-0 max-md:-translate-x-full'">
-            <sidebarComponent :content="$page.props.content"></sidebarComponent>
+            <sidebarComponent></sidebarComponent>
         </aside>
         <div class="flex-1 min-w-0 flex flex-col">
             <header class="h-14 px-4 flex items-center gap-3 border-b border-line bg-surface">
