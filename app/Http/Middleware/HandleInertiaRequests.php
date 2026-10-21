@@ -7,7 +7,7 @@ use Inertia\Middleware;
 
 /*
      HandleInertiaRequests.php sets $rootView = 'app', telling Inertia to use app.blade.php as the root HTML template for your Vue application.
-     
+
      This file handles the data Laravel shares with your frontend and identifies the root Blade template.
 
      This tells Inertia to use the app.blade.php file as its root HTML template when a page is first loaded.

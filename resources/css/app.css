@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --chili: #CD1C18; --scarlet: #ED2100; --cinnabar: #E84B3D;
+  --rose: #FA003F;  --fire: #CE2029;    --vermilion: #E34234;
+
+  --bg: #FBF5F4; --surface: #FFFFFF; --surface-2: #F6EBE9;
+  --fg: #2A1211; --muted: #7A5B58; --line: #EBD9D6;
+  --accent-soft: #FBE3E1; --link: var(--chili);
+}
+:root[data-theme="dark"] {
+  --bg: #150B0B; --surface: #1F1111; --surface-2: #2A1716;
+  --fg: #F7E9E7; --muted: #B79A97; --line: #3A2221;
+  --accent-soft: #3A1514; --link: var(--cinnabar);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);           --color-surface: var(--surface);
+  --color-surface2: var(--surface-2); --color-fg: var(--fg);
+  --color-muted: var(--muted);     --color-line: var(--line);
+  --color-accentsoft: var(--accent-soft); --color-link: var(--link);
+  --color-chili: var(--chili);     --color-scarlet: var(--scarlet);
+  --color-cinnabar: var(--cinnabar); --color-rose: var(--rose);
+  --color-fire: var(--fire);       --color-vermilion: var(--vermilion);
+  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, sans-serif;
+}
+
+body { @apply bg-bg text-fg font-sans; }
+
+@layer components {
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .icon-btn:hover {
+    border-color: var(--cinnabar);
+    background: var(--surface-2);
+  }
+  .icon-btn:focus-visible {
+    outline: 2px solid var(--scarlet);
+    outline-offset: 2px;
+  }
+}
