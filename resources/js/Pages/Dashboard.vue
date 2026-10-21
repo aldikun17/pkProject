@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <AuthenticatedLayout :content="$page.props.content">
+    <AuthenticatedLayout>
     <div class="min-h-screen bg-bg py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden rounded-lg border border-line bg-surface shadow-sm">

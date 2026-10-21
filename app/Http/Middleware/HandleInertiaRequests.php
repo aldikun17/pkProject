@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Service\ContentService\SidebarContentService\SidebarContentService;
 
 /*
      HandleInertiaRequests.php sets $rootView = 'app', telling Inertia to use app.blade.php as the root HTML template for your Vue application.
@@ -39,10 +41,12 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $sidebarContent = new SidebarContentService(Auth::User());
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user'      => $request->user(),
+                'sidebar'   => $sidebarContent->getRoleBaseSidebarContent()
             ],
         ];
 
