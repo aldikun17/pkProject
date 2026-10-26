@@ -38,11 +38,11 @@ class SidebarContentService {
 
                 case 1:
                     return [
-                        'dashboard' => '/dashboard',
-                        'category'  => '/heath/event/categories',
-                        'events'    => '/health/events',
-                        'reports'   => '/reports',
-                        'sign_out'  => '/auth/sign/out'
+                        'dashboard' => 'dashboard',
+                        'category'  => 'event.category',
+                        'events'    => 'health.events',
+                        'reports'   => 'event.reports',
+                        'sign_out'  => 'auth.sign.out'
                     ];
                     break;
 

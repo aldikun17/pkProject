@@ -6,22 +6,38 @@ use Illuminate\Http\Request;
 use App\Http\Service\ContentService\SidebarContentService\SidebarContentService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Enums\Event\Categories;
+//maps
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 
 class DashboardController extends Controller{
 
-    protected function contentService($auth){
+    public function dashboard(){
 
-        return new SidebarContentService($auth);
+        return Inertia::render('Dashboard');
 
     }
 
-    public function dashboard(){
+    public function category(){
+        return Inertia::render('Admin/Category/Index/Category',[
+            'categories' => Categories::cases()
+        ]);
+    }
 
-        $sidebarContent = $this->contentService(Auth::user());
-        return Inertia::render('Dashboard',[
-            'content' => $sidebarContent->getRoleBaseSidebarContent()
+    public function events(){
+
+        return Inertia::render('Admin/Events/Index/Event',[
+            'places'  => [],
+            'center'  => [14.52899, 121.06998],
+            'zoom'    => 15
         ]);
 
     }
+
+    public function reports(){
+        return Inertia::render('Admin/Reports/Report');
+    }
+
 }

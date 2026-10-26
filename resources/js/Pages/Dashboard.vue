@@ -2,12 +2,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head , usePage } from '@inertiajs/vue3';
 const page = usePage();
-const props = defineProps({
-    content: {
-        type:Object,
-        required: true
-    }
-});
 </script>
 
 <template>

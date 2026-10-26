@@ -26,12 +26,18 @@ console.log();
         </aside>
         <div class="flex-1 min-w-0 flex flex-col">
             <header class="h-14 px-4 flex items-center gap-3 border-b border-line bg-surface">
-                <button class="icon-btn" aria-label="Toggle sidebar" :aria-expanded="open" @click="toggle">☰</button>
+                <button class="icon-btn" aria-label="Toggle sidebar" :aria-expanded="open" @click="toggle">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg>
+                </button>
+                <div class="min-w-0 flex-1 truncate text-muted text-sm">
+                    Redline Studio <span class="mx-1 opacity-60">/</span> <span class="text-fg font-medium" id="crumb">Overview</span>
+                </div>
                 <div class="flex-1" />
                 <lightComponent :themeColor="theme" @toggle-theme="changeTheme" />
             </header>
-            <main class="flex-1 overflow-y-auto p-4 md:p-10">
-                <div class="min-h-screen bg-bg py-12">
+
+            <main class="flex-1 overflow-y-auto p-2 md:p-4">
+                <div class="min-h-screen bg-bg">
                     <slot />
                 </div>
             </main>
