@@ -1,30 +1,43 @@
 <script setup>
-import { Link , usePage } from '@inertiajs/vue3'
+import { Link, usePage } from "@inertiajs/vue3";
 const page = usePage();
-const sidebarOption = defineEmits(['sidebar-toggle']);
-function sidebar_toggle(){
-    const item = props.String === 'Open' ? 'Clo' : 'dark';
-    emit('sidebar-toggle', newTheme);
+const sidebarOption = defineEmits(["sidebar-toggle"]);
+function sidebar_toggle() {
+    const item = props.String === "Open" ? "Clo" : "dark";
+    emit("sidebar-toggle", newTheme);
 }
 const isActive = (href) => {
-  // strip origin and query string, so full URLs and "?page=2" don't break the match
-  const path = new URL(href, window.location.origin).pathname
-  const current = page.url.split('?')[0]
-  return current === path || current.startsWith(path + '/')
-}
+    // strip origin and query string, so full URLs and "?page=2" don't break the match
+    const path = new URL(href, window.location.origin).pathname;
+    const current = page.url.split("?")[0];
+    return current === path || current.startsWith(path + "/");
+};
 
 const format = (label) =>
-  label.charAt(0).toUpperCase() + label.slice(1).replaceAll('_', ' ')
-
+    label.charAt(0).toUpperCase() + label.slice(1).replaceAll("_", " ");
 </script>
 <template>
     <div class="h-14 px-4 flex items-center gap-3 border-b border-line">
         <span class="font-display font-bold"> CGT </span>
     </div>
     <nav class="flex-1 p-4 flex flex-col gap-1">
-        <Link v-for="(url, label) in page.props.auth.sidebar" :key="label" :href="route(url)" class="rounded-lg px-3 py-2 font-medium transition-colors"
-        :class="isActive(label.href) ? 'bg-accentsoft text-link' : 'text-muted hover:bg-surface2 hover:text-fg'" >
-            {{ label.charAt(0).toUpperCase() + label.slice(1).replaceAll('_', ' ') }} <!-- capitalize the first letter and remove the underscore -->
+        <Link
+            v-for="(url, label) in page.props.auth.sidebar"
+            :key="label"
+            :method="label === 'sign_out' ? 'post' : 'get'"
+            :href="route(url)"
+            class="block w-full text-left rounded-lg px-3 py-2 font-medium transition-colors"
+            :class="
+                isActive(url)
+                    ? 'bg-accentsoft text-link'
+                    : 'text-muted hover:bg-surface2 hover:text-fg'
+            "
+        >
+            {{
+                label.charAt(0).toUpperCase() +
+                label.slice(1).replaceAll("_", " ")
+            }}
+            <!-- capitalize the first letter and remove the underscore -->
         </Link>
     </nav>
 </template>
